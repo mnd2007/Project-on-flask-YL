@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Чаты</h1>
+{% if not empty %}
+{% for item in chat%}
+<div class="col-md6 border rounded">
+    {% if l %}
+        <h4>{{item.name_out}}</h4>
+    {% else %}
+        <h4>{{item.name_to}}</h4>
+    {% endif %}
+    <div>
+        <a href="/chat/{{ item.name_out }}/{{ item.name_to }}" class="btn btn-success">
+            Открыть
+        </a>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+    <a class="text-secondary text-centre">Чатов пока нет, но вы можете начать общение, нажав на
+        кнопку "Добавить чат" в верхней правой части страницы</a>
+{% endif %}
+{% endblock %}
